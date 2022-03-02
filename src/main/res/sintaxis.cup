@@ -1,0 +1,46 @@
+package edu.mooncoder.model.analizer.syntax;
+
+import edu.mooncoder.model.analizer.lexic.Lexer;
+import edu.mooncoder.model.domain.containers.Apuesta;
+import edu.mooncoder.model.domain.structures.BetsList;
+
+parser code {:
+  private BetsList bets = new BetsList();
+
+  public Parser(Lexer lexer) {
+    super(lexer);
+  }
+
+  public BetsList getBets() { return bets; }
+:}
+
+terminal int CABALLO;
+terminal String APOSTADOR;
+terminal double MONTO;
+terminal COMA, BREAKLINE;
+
+non terminal apuestas;
+non terminal int[] posiciones;
+
+start with apuestas;
+
+apuestas ::= APOSTADOR:nombre COMA MONTO:monto COMA posiciones:apuestas BREAKLINE apuestas
+             {: bets.add(new Apuesta(nombre, monto, apuestas)); :}
+             |
+             APOSTADOR:nombre COMA MONTO:monto COMA posiciones:apuestas BREAKLINE
+             {: bets.add(new Apuesta(nombre, monto, apuestas)); :}
+             |
+             APOSTADOR:nombre COMA MONTO:monto COMA posiciones:apuestas
+             {: bets.add(new Apuesta(nombre, monto, apuestas)); :}
+             ;
+
+posiciones ::= posiciones:caballos COMA CABALLO:caballo
+               {:
+                RESULT = new int[caballos.length + 1];
+                System.arraycopy(caballos, 0, RESULT, 0, caballos.length);
+                System.arraycopy(new int[] { caballo }, 0, RESULT, caballos.length, 1);
+              :}
+               |
+               CABALLO:caballo
+               {: RESULT = new int[] {caballo}; :}
+               ;
