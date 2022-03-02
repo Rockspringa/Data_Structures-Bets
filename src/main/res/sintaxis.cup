@@ -32,6 +32,8 @@ apuestas ::= APOSTADOR:nombre COMA MONTO:monto COMA posiciones:apuestas BREAKLIN
              |
              APOSTADOR:nombre COMA MONTO:monto COMA posiciones:apuestas
              {: bets.add(new Apuesta(nombre, monto, apuestas)); :}
+             |
+             error BREAKLINE
              ;
 
 posiciones ::= posiciones:caballos COMA CABALLO:caballo

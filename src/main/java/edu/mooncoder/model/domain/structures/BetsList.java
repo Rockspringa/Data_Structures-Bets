@@ -7,6 +7,7 @@ import edu.mooncoder.model.tools.exceptions.RepeatedDigitExpection;
 
 public class BetsList {
     private Node root;
+    private Node leaf;
     private int length;
 
     public void add(Apuesta data) {
@@ -14,6 +15,8 @@ public class BetsList {
 
         if (root != null) {
             root.setLeft(nodo);
+        } else {
+            leaf = nodo;
         }
         root = nodo;
         length++;
@@ -36,10 +39,36 @@ public class BetsList {
                 for (int i = 0; i < 10; i++)
                     set.add(caballos[i]);
             } catch (NotADigitException | RepeatedDigitExpection | BetsOutOfBounds e) {
-                if (anchor.getLeft() != null)
+                if (anchor.getLeft() != root) {
                     anchor.getLeft().setRight(anchor.getRight());
+                } else {
+                    root = anchor.getRight();
+                    root.setLeft(null);
+                }
             }
 
+            anchor = anchor.getRight();
+        }
+        System.out.println("time: " + (System.currentTimeMillis() - time));
+    }
+
+    public void setResults(int[] results) {
+        Node anchor = root;
+
+        long time = System.currentTimeMillis();
+
+        while (anchor != null) {
+            int[] caballos = anchor.getData().getApuestas();
+            int score = 0, puntos = 10;
+
+            for (int i = 0; i < 10; i++) {
+                if (caballos[i] == results[i]) {
+                    score += puntos;
+                }
+                puntos--;
+            }
+
+            anchor.getData().setScore(score);
             anchor = anchor.getRight();
         }
         System.out.println("time: " + (System.currentTimeMillis() - time));
@@ -65,6 +94,7 @@ public class BetsList {
             min.swapWith(anchor);
             anchor = min.getRight();
         }
+        leaf = anchor;
     }
 
     public Apuesta[] toArray() {
@@ -77,5 +107,26 @@ public class BetsList {
         }
 
         return apuestas;
+    }
+
+    public Apuesta[] toReversedArray() {
+        Apuesta[] apuestas = new Apuesta[length];
+        Node anchor = leaf;
+
+        for (int i = 0; i < apuestas.length; i++) {
+            apuestas[i] = anchor.getData();
+            anchor = anchor.getLeft();
+        }
+
+        return apuestas;
+    }
+
+    public void printScores() {
+        Node anchor = root;
+
+        while (anchor != null) {
+            System.out.println(anchor.getData().getScore());
+            anchor = anchor.getRight();
+        }
     }
 }

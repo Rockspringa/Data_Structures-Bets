@@ -7,7 +7,7 @@ public class DigitSet {
     private int[] digits = new int[10];
 
     public void add(int digit) throws NotADigitException, RepeatedDigitExpection {
-        if (digit < 0 && 9 < digit)
+        if (digit < 0 || 9 < digit)
             throw new NotADigitException(digit); 
 
         if (digits[digit] != digit + 1)
