@@ -7,19 +7,30 @@ import edu.mooncoder.model.tools.exceptions.RepeatedDigitExpection;
 
 public class BetsList {
     private Node root;
-    private Node leaf;
     private int length;
 
     public void add(Apuesta data) {
         Node nodo = new Node(data);
 
         if (root != null) {
+            Node leaf = root.getLeft();
             root.setLeft(nodo);
+            nodo.setLeft(leaf);
         } else {
-            leaf = nodo;
+            nodo.setLeft(nodo);
         }
         root = nodo;
         length++;
+    }
+
+    public static void concat(BetsList first, BetsList second) {
+        if (second.length == 0) return;
+
+        Node nodeToAdd = second.root.getLeft();
+        for (int i = 0; i < second.length; i++) {
+            first.add(nodeToAdd.getData());
+            nodeToAdd = nodeToAdd.getLeft();
+        }
     }
 
     public void filterBets() {
@@ -27,7 +38,8 @@ public class BetsList {
 
         long time = System.currentTimeMillis();
 
-        while (anchor != null) {
+        int lastLength = length;
+        for (int item = 0; item < lastLength; item++) {
             DigitSet set = new DigitSet();
 
             int[] caballos = anchor.getData().getApuestas();
@@ -39,14 +51,15 @@ public class BetsList {
                 for (int i = 0; i < 10; i++)
                     set.add(caballos[i]);
             } catch (NotADigitException | RepeatedDigitExpection | BetsOutOfBounds e) {
-                if (anchor.getLeft() != root) {
+                if (length > 1) {
                     anchor.getLeft().setRight(anchor.getRight());
-                } else {
-                    root = anchor.getRight();
-                    root.setLeft(null);
+                    if (anchor == root)
+                        root = anchor.getRight();
+                } else if (length == 1) {
+                    root = null;
                 }
+                length--;
             }
-
             anchor = anchor.getRight();
         }
         System.out.println("time: " + (System.currentTimeMillis() - time));
@@ -57,7 +70,7 @@ public class BetsList {
 
         long time = System.currentTimeMillis();
 
-        while (anchor != null) {
+        for (int n = 0; n < length; n++) {
             int[] caballos = anchor.getData().getApuestas();
             int score = 0, puntos = 10;
 
@@ -77,11 +90,11 @@ public class BetsList {
     public void sort(boolean byScore) {
         Node anchor = root;
 
-        while (anchor.getRight() != null) {
+        for (int i = 0; i < length - 1; i++) {
             Node min = anchor;
             Node searcher = anchor.getRight();
 
-            while (searcher != null) {
+            while (searcher != root) {
                 if (searcher.isLess(min, byScore)) {
                     min = searcher;
                 }
@@ -94,7 +107,6 @@ public class BetsList {
             min.swapWith(anchor);
             anchor = min.getRight();
         }
-        leaf = anchor;
     }
 
     public Apuesta[] toArray() {
@@ -111,7 +123,7 @@ public class BetsList {
 
     public Apuesta[] toReversedArray() {
         Apuesta[] apuestas = new Apuesta[length];
-        Node anchor = leaf;
+        Node anchor = root.getLeft();
 
         for (int i = 0; i < apuestas.length; i++) {
             apuestas[i] = anchor.getData();
@@ -119,14 +131,5 @@ public class BetsList {
         }
 
         return apuestas;
-    }
-
-    public void printScores() {
-        Node anchor = root;
-
-        while (anchor != null) {
-            System.out.println(anchor.getData().getScore());
-            anchor = anchor.getRight();
-        }
     }
 }

@@ -9,8 +9,8 @@ import java.nio.file.Files;
 public class StringFileContent {
     private final String content;
     
-    public StringFileContent(String path) throws IOException {
-        this.content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
+    public StringFileContent(File file) throws IOException {
+        this.content = Files.readString(file.toPath(), StandardCharsets.UTF_8);
     }
 
     public String getContent() {
