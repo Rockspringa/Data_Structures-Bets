@@ -1,6 +1,6 @@
 package edu.mooncoder.design;
 
-import edu.mooncoder.controller.services.ResultsManager;
+import edu.mooncoder.controller.managers.ResultsManager;
 
 import javax.swing.*;
 

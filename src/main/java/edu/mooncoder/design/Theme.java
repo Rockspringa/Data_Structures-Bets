@@ -1,7 +1,6 @@
 package edu.mooncoder.design;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.UIManager;
@@ -61,6 +60,23 @@ public interface Theme {
 
         UIManager.put("ScrollPane.background", primaryBg);
         UIManager.put("ScrollPane.foreground", primaryFg);
+
+        UIManager.put("Separator.background", secondaryBg);
+        UIManager.put("Separator.foreground", secondaryBg);
+        UIManager.put("TabbedPane.contentBorderInsets", new Insets(0, 0, 0, 0));
+        UIManager.put("TabbedPane.contentAreaColor ", secondaryFg);
+        UIManager.put("TabbedPane.selected", thirdBg);
+        UIManager.put("TabbedPane.background", secondaryFg);
+        UIManager.put("TabbedPane.shadow", secondaryFg);
+
+        UIManager.put("MenuBar.background", thirdBg);
+        UIManager.put("MenuBar.opaque", true);
+
+        UIManager.put("MenuItem.background", secondaryBg);
+        UIManager.put("MenuItem.foreground", secondaryFg);
+        UIManager.put("MenuItem.focus", Color.DARK_GRAY);
+        UIManager.put("MenuItem.opaque", true);
+        UIManager.put("MenuItem.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         UIManager.put("Button.background", secondaryBg);
         UIManager.put("Button.foreground", secondaryFg);

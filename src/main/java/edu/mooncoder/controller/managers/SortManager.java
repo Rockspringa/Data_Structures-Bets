@@ -1,4 +1,4 @@
-package edu.mooncoder.controller.services;
+package edu.mooncoder.controller.managers;
 
 import edu.mooncoder.controller.Manager;
 import edu.mooncoder.model.domain.containers.Apuesta;

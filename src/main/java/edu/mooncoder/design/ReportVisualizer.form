@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="edu.mooncoder.design.ReportVisualizer">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="48" y="54" width="469" height="236"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="94766" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="98af6">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <grid id="9538f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="e7465" class="javax.swing.JButton" binding="buttonOK">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Roboto Slab" style="1"/>
+                  <text value="Cerrar"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="e3588" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="c83e3" class="javax.swing.JLabel" binding="titleLbl">
+            <constraints border-constraint="North"/>
+            <properties>
+              <font name="Roboto Slab" size="16" style="1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="11"/>
+              <text value="Reportes"/>
+            </properties>
+          </component>
+          <tabbedpane id="ef7a6" binding="tabbedPane1" default-binding="true">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-14605014"/>
+              <font name="Roboto" size="12" style="1"/>
+              <foreground color="-5524800"/>
+              <opaque value="true"/>
+              <tabLayoutPolicy value="0"/>
+            </properties>
+            <border type="none">
+              <size top="0" left="0" bottom="0" right="0"/>
+            </border>
+            <children>
+              <grid id="1d117" binding="verificationPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Etapa de Verificacion"/>
+                </constraints>
+                <properties/>
+                <border type="line">
+                  <color color="-12762549"/>
+                </border>
+                <children>
+                  <component id="2e388" class="javax.swing.JList" binding="attrVerList">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Roboto Slab" style="1"/>
+                      <foreground color="-5524800"/>
+                      <model>
+                        <item value="Tiempo promedio de proceso:"/>
+                        <item value="Promedio de pasos de procesamiento:"/>
+                        <item value="Mayor cantidad de pasos:"/>
+                        <item value="Menor cantidad de pasos:"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="6678e" class="javax.swing.JList" binding="dataVerList">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="JetBrains Mono"/>
+                      <foreground color="-5524800"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="fdde8" binding="resultsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Etapa de Resultados"/>
+                </constraints>
+                <properties/>
+                <border type="line">
+                  <color color="-12762549"/>
+                </border>
+                <children>
+                  <component id="2fdd5" class="javax.swing.JList" binding="attrResList">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Roboto Slab" style="1"/>
+                      <foreground color="-5524800"/>
+                      <model>
+                        <item value="Tiempo promedio de proceso:"/>
+                        <item value="Promedio de pasos de procesamiento:"/>
+                        <item value="Mayor cantidad de pasos:"/>
+                        <item value="Menor cantidad de pasos:"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="f78f" class="javax.swing.JList" binding="dataResList">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="JetBrains Mono"/>
+                      <foreground color="-5524800"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="cb96b" binding="sortPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Etapa de Ordenamiento"/>
+                </constraints>
+                <properties/>
+                <border type="line">
+                  <color color="-12762549"/>
+                </border>
+                <children>
+                  <component id="dee5a" class="javax.swing.JList" binding="attrSorList">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Roboto Slab" style="1"/>
+                      <foreground color="-5524800"/>
+                      <model>
+                        <item value="Tiempo promedio de proceso:"/>
+                        <item value="Promedio de pasos de procesamiento:"/>
+                        <item value="Mayor cantidad de pasos:"/>
+                        <item value="Menor cantidad de pasos:"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="11d21" class="javax.swing.JList" binding="dataSorList">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="JetBrains Mono"/>
+                      <foreground color="-5524800"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </tabbedpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

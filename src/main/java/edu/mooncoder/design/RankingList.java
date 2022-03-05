@@ -1,6 +1,6 @@
 package edu.mooncoder.design;
 
-import edu.mooncoder.controller.services.SortManager;
+import edu.mooncoder.controller.managers.SortManager;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
