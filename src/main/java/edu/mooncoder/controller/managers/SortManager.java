@@ -29,7 +29,7 @@ public class SortManager extends Manager {
         int index = 0;
 
         for (Apuesta bet : orderedBets) {
-            data[index++] = new Object[]{index + 1, bet.getApostador(), bet.getMonto(), bet.getScore()};
+            data[index++] = new Object[]{index, bet.getApostador(), bet.getMonto(), bet.getScore()};
         }
 
         return data;
