@@ -9,7 +9,7 @@ import edu.mooncoder.model.domain.structures.BetsList;
 import edu.mooncoder.model.tools.readers.BetsReader;
 
 public class BetsManager extends Manager {
-    private BetsReader betsReader;
+    private final BetsReader betsReader;
 
     public BetsManager() {
         betsReader = new BetsReader();

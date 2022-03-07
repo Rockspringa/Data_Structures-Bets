@@ -4,7 +4,7 @@ import edu.mooncoder.model.tools.exceptions.NotADigitException;
 import edu.mooncoder.model.tools.exceptions.RepeatedDigitExpection;
 
 public class DigitSet {
-    private int[] digits = new int[10];
+    private final int[] digits = new int[10];
 
     public void add(int digit) throws NotADigitException, RepeatedDigitExpection {
         if (digit < 0 || 9 < digit)

@@ -1,7 +1,6 @@
 package edu.mooncoder.model.domain.structures;
 
 import edu.mooncoder.model.domain.containers.Apuesta;
-import edu.mooncoder.model.domain.containers.Report;
 import edu.mooncoder.model.domain.containers.reports.ResultsReport;
 import edu.mooncoder.model.domain.containers.reports.SortReport;
 import edu.mooncoder.model.domain.containers.reports.VerificationReport;
@@ -12,6 +11,20 @@ import edu.mooncoder.model.tools.exceptions.RepeatedDigitExpection;
 public class BetsList {
     private Node root;
     private int length;
+
+    public static void concat(BetsList first, BetsList second) {
+        if (second.length == 0) return;
+
+        Node nodeToAdd = second.root.getLeft();
+        for (int i = 0; i < second.length; i++) {
+            first.add(nodeToAdd.getData());
+            nodeToAdd = nodeToAdd.getLeft();
+        }
+    }
+
+    public int getLength() {
+        return length;
+    }
 
     public void add(Apuesta data) {
         Node nodo = new Node(data);
@@ -25,16 +38,6 @@ public class BetsList {
         }
         root = nodo;
         length++;
-    }
-
-    public static void concat(BetsList first, BetsList second) {
-        if (second.length == 0) return;
-
-        Node nodeToAdd = second.root.getLeft();
-        for (int i = 0; i < second.length; i++) {
-            first.add(nodeToAdd.getData());
-            nodeToAdd = nodeToAdd.getLeft();
-        }
     }
 
     public void filterBets() {
@@ -58,6 +61,7 @@ public class BetsList {
                     pasos += 3; // 2 del for y 1 de set.add(...)
                 }
             } catch (NotADigitException | RepeatedDigitExpection | BetsOutOfBounds e) {
+
                 if (length > 1) {
                     anchor.getLeft().setRight(anchor.getRight());
                     if (anchor == root) {

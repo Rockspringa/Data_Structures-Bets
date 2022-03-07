@@ -52,7 +52,7 @@ public class HorseSelector extends JDialog {
         Object[] tmp = new Object[horses.length - 1];
         for (int i = 0, j = 0; i < horses.length; i++) {
             if ((int) horses[i] != value)
-                tmp[j++] = (int) horses[i];
+                tmp[j++] = horses[i];
         }
         horses = tmp;
         this.dispose();
@@ -61,18 +61,26 @@ public class HorseSelector extends JDialog {
             new HorseSelector();
         } else {
             posiciones[index++] = (int) horses[0] - 1;
-            new ResultsManager(posiciones);
 
-            if (rankingList == null) {
-                rankingList = new RankingList(parent);
+            ResultsManager resultsManager = new ResultsManager();
+            resultsManager.filterBets();
+            resultsManager.setResults(posiciones);
+
+            if (resultsManager.showRanking()) {
+                if (rankingList == null) {
+                    rankingList = new RankingList(parent);
+                } else {
+                    rankingList.setVisible(true);
+                    rankingList.setLocationRelativeTo(null);
+                }
             } else {
-                rankingList.setVisible(true);
-                rankingList.setLocationRelativeTo(null);
+                JOptionPane.showMessageDialog(this,
+                        "No hay ninguna apuesta que mostrar, pero pronto iniciara otra carrera",
+                        "Sin apuestas", JOptionPane.INFORMATION_MESSAGE);
+
+                parent.setVisible(true);
+                parent.setLocationRelativeTo(null);
             }
         }
-    }
-
-    public static int[] getPosiciones() {
-        return posiciones;
     }
 }

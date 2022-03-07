@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class BetsReader {
     private StringFileContent file;
-    private int[] betsReport = new int[] { 0, 0 };
+    private final int[] betsReport = new int[] { 0, 0 };
 
     public void setPath(File file) throws IOException {
         this.file = new StringFileContent(file);

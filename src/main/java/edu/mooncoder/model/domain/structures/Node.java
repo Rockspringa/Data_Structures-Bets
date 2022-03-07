@@ -3,7 +3,7 @@ package edu.mooncoder.model.domain.structures;
 import edu.mooncoder.model.domain.containers.Apuesta;
 
 class Node {
-    private Apuesta data;
+    private final Apuesta data;
     private Node left;
     private Node right;
 
@@ -13,18 +13,8 @@ class Node {
         this.right = null;
     }
 
-    Node(Apuesta data, Node left, Node right) {
-        this.data = data;
-        this.left = left;
-        this.right = right;
-    }
-
     public Apuesta getData() {
         return data;
-    }
-
-    public void setData(Apuesta data) {
-        this.data = data;
     }
 
     public Node getLeft() {
@@ -63,7 +53,7 @@ class Node {
         if (byScore) {
             return this.getData().getScore() < node.getData().getScore();
         } else {
-            return 0 < node.getData().getApostador().compareTo(this.getData().getApostador());
+            return 0 < node.getData().getApostador().compareToIgnoreCase(this.getData().getApostador());
         }
     }
 

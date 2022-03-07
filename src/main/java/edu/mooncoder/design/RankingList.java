@@ -5,11 +5,14 @@ import edu.mooncoder.controller.managers.SortManager;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RankingList extends JFrame {
-    private JLabel titleLabel;
     private JScrollPane tableScroller;
     private JPanel principal;
+    private JLabel titleLabel;
+    private JButton atrasBtn;
     private JTable rankingTable = new JTable();
     private SortManager sortManager;
     private JFrame parent;
@@ -27,6 +30,7 @@ public class RankingList extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        atrasBtn.addActionListener(e -> dispose());
     }
 
     @Override
@@ -34,7 +38,7 @@ public class RankingList extends JFrame {
         super.dispose();
         parent.setVisible(true);
         parent.setLocationRelativeTo(null);
-        JOptionPane.showMessageDialog(parent, "Acaba de iniciar otra carrera, puede volver a apostar",
+        JOptionPane.showMessageDialog(parent, "Esta por iniciar otra carrera, puede volver a apostar",
                 "Informacion nueva carrera", JOptionPane.INFORMATION_MESSAGE);
     }
 

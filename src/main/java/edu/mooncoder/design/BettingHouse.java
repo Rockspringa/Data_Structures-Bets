@@ -112,7 +112,9 @@ public class BettingHouse extends JFrame implements Theme {
                 JOptionPane.showMessageDialog(this, message, title, JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException | NumberFormatException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Ocurrio un error abriendo el archivo, vuelva a intentarlo",
+                    "Archivo no abierto", JOptionPane.ERROR_MESSAGE);
         }
     }
 

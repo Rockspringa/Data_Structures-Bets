@@ -1,3 +1,0 @@
-digraph "edu.mooncoder:DevilsDeal:jar:1.0" { 
-	"edu.mooncoder:DevilsDeal:jar:1.0" -> "com.github.vbmacher:java-cup-runtime:jar:11b:compile" ; 
- } 

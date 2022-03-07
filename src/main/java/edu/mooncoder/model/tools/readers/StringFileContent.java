@@ -1,6 +1,5 @@
 package edu.mooncoder.model.tools.readers;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
