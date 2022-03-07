@@ -1,6 +1,7 @@
 package edu.mooncoder.model.domain.structures;
 
 import edu.mooncoder.model.domain.containers.Apuesta;
+import edu.mooncoder.model.domain.containers.BadBetsDetails;
 import edu.mooncoder.model.domain.containers.reports.ResultsReport;
 import edu.mooncoder.model.domain.containers.reports.SortReport;
 import edu.mooncoder.model.domain.containers.reports.VerificationReport;
@@ -61,7 +62,7 @@ public class BetsList {
                     pasos += 3; // 2 del for y 1 de set.add(...)
                 }
             } catch (NotADigitException | RepeatedDigitExpection | BetsOutOfBounds e) {
-
+                new BadBetsDetails(anchor.getData().getApostador(), e.getMessage());
                 if (length > 1) {
                     anchor.getLeft().setRight(anchor.getRight());
                     if (anchor == root) {
